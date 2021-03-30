@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'Lozung';
+    src: url("../fonts/Lozung-Black.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* ------------------------- Parallax -------------------------------------------------- */
+
+header {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+header .parallax {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+}
+
+header .parallax .layer {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+
+header .bottom-fade {
+    width: 100%;
+    bottom: 0px;
+    height: 60vh;
+    position: absolute;
+	background: linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.738) 19%, rgba(0, 0, 0, 0.541) 34%, rgba(0, 0, 0, 0.382) 47%, rgba(0, 0, 0, 0.278) 56.5%, rgba(0, 0, 0, 0.194) 65%, rgba(0, 0, 0, 0.126) 73%, rgba(0, 0, 0, 0.075) 80.2%, rgba(0, 0, 0, 0.042) 86.1%, rgba(0, 0, 0, 0.021) 91%, rgba(0, 0, 0, 0.008) 95.2%, rgba(0, 0, 0, 0.002) 98.2%, transparent 100%);
+}
+
+header .top-fade {
+    width: 100%;
+    top: 0;
+    height: 30vh;
+    position: absolute;
+    background: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.738) 19%, rgba(0, 0, 0, 0.541) 34%, rgba(0, 0, 0, 0.382) 47%, rgba(0, 0, 0, 0.278) 56.5%, rgba(0, 0, 0, 0.194) 65%, rgba(0, 0, 0, 0.126) 73%, rgba(0, 0, 0, 0.075) 80.2%, rgba(0, 0, 0, 0.042) 86.1%, rgba(0, 0, 0, 0.021) 91%, rgba(0, 0, 0, 0.008) 95.2%, rgba(0, 0, 0, 0.002) 98.2%, transparent 100%);
+    opacity: .2;
+}
+
+@media screen and (max-width: 640px) {
+
+    header {
+        height: 100vh;
+    }
+
+    header .parallax {
+        height: 85vh;
+    }
+
+    header .parallax .layer {
+        height: 85vh;
+    }
+
+    header .parallax .layer.fade-in {
+        position: absolute;
+        height: 75vh;
+        margin-top: 5vh;
+    }
+    header .bottom-fade {
+        bottom: 0;
+        height: 100vh;
+        background: linear-gradient(to top, black 15%, rgba(0, 0, 0, 0.738) 30%, rgba(0, 0, 0, 0.541) 34%, rgba(0, 0, 0, 0.382) 37%, rgba(0, 0, 0, 0.278) 40.5%, rgba(0, 0, 0, 0.194) 45%, rgba(0, 0, 0, 0.126) 53%, rgba(0, 0, 0, 0.075) 60.2%, rgba(0, 0, 0, 0.042) 66.1%, rgba(0, 0, 0, 0.021) 71%, rgba(0, 0, 0, 0.008) 75.2%, rgba(0, 0, 0, 0.002) 78.2%, transparent 100%);
+    }
+}
+
+/* background */
+#parallax__title {
+    text-align: center;
+    font-size: 12vw;
+    padding-top: 20vh;
+    font-family: 'Lozung', sans-serif;
+}
+
+.parallax__full-bg {
+    background: url('../images/background-mobile.jpg');
+    background: url('../images/webP/background-mobile.webp');
+    background-position: center center;
+
+    background-size: cover;
+}
+
+.parallax__part-bg {
+    background: url('../images/background-mobile-parallax.png');
+    background: url('../images/webP/background-mobile-parallax.webp');
+    background-position: center center;
+    background-size: cover;
+}
+
+@media screen and (min-width: 640.99px) {
+
+    .parallax__full-bg {
+        background: url('../images/background-desktop.jpg');
+        background: url('../images/webP/background-desktop.webp');
+    background-position: center center;
+        background-size: cover;
+    }
+
+    #parallax__title {
+        font-size: 13vw;
+        padding-top: 26vh;
+    }
+
+    .parallax__part-bg {
+        background: url('../images/background-desktop-parallax.png');
+        background: url('../images/webP/background-desktop-parallax.webp');
+        background-position: center center;
+        background-size: cover;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #parallax__title {
+        font-size: 7vw;
+        padding-top: 34vh;
+    }
+}
+
+nav {
+    opacity: 0;
+    visibility: hidden;
+}
+
+nav ul {
+    opacity: 0;
+}
+
+.logo-home .logo-name-second {
+    opacity: 0;
+}
+
+header.scrolled .logo-home span,
+header.scrolled.active .logo-home span,
+header.active .logo-home span {
+    opacity: 0;
+}
+
+.form-wrap {
+    opacity: 0;
+}
+
+
