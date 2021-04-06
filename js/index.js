@@ -454,8 +454,11 @@ body.addEventListener("input", (e) => {
   if (phoneFirstIndex === "8" && phoneInput.value.length === 11) {
     phoneInput.style.borderBottom = "1px solid rgba(255, 255, 255)";
   }
-
-  if (emailInput.value.includes(".")) {
+  if (
+    /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(
+      emailInput.value
+    )
+  ) {
     emailInput.style.borderBottom = "1px solid rgba(255, 255, 255)";
   }
   if (e.target.name === "name") {
@@ -520,7 +523,11 @@ formUser.addEventListener("submit", async (e) => {
     return;
   }
 
-  if (!emailInput.value.includes(".")) {
+  if (
+    !/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(
+      emailInput.value
+    )
+  ) {
     emailInput.style.borderBottom = "1px solid rgba(255, 0, 0)";
     return;
   }
