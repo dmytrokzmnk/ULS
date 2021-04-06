@@ -50,37 +50,53 @@ const formWrap = document.querySelectorAll(".form-wrap");
 const faders = document.querySelectorAll(".fade-in");
 const footer = document.querySelector("footer");
 const main = document.querySelector("main");
+const homeOverlay = document.querySelector(".home-overlay");
+const homeOverlayTitle = document.querySelector(".home-overlay__title");
 let scriptGoogle = false;
-addEventListener("load", function () {
-  var viewport = document.querySelector("meta[name=viewport]");
-  viewport.setAttribute(
-    "content",
-    viewport.content + ", height=" + window.innerHeight
-  );
+const progressBar = document.querySelector(".progress-bar");
+
+homeOverlayTitle.classList.add("load");
+
+const images = [...document.images];
+let imagesLoadedLength = 0;
+
+function imageLoaded() {
+  imagesLoadedLength += 1;
+  progressBar.style.width = `${(100 / images.length) * imagesLoadedLength}%`;
+}
+
+images.forEach((el) => {
+  const imageClone = new Image();
+  imageClone.onload = imageLoaded;
+  imageClone.onerror = imageLoaded;
+  imageClone.src = el.src;
 });
 
-const appearOptions = {
-  threshold: 0,
-  rootMargin: "0px 0px -100px 0px",
-};
+addEventListener("load", function () {
+  homeOverlay.classList.add("load");
+  const appearOptions = {
+    threshold: 0,
+    rootMargin: "0px 0px -100px 0px",
+  };
 
-const appearOnScroll = new IntersectionObserver(function (
-  entries,
-  appearOnScroll
-) {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) {
-      return;
-    } else {
-      entry.target.classList.add("appear");
-      appearOnScroll.unobserve(entry.target);
-    }
+  const appearOnScroll = new IntersectionObserver(function (
+    entries,
+    appearOnScroll
+  ) {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add("appear");
+        appearOnScroll.unobserve(entry.target);
+      }
+    });
+  },
+  appearOptions);
+
+  faders.forEach((fader) => {
+    appearOnScroll.observe(fader);
   });
-},
-appearOptions);
-
-faders.forEach((fader) => {
-  appearOnScroll.observe(fader);
 });
 
 window.addEventListener("scroll", () => {
@@ -127,7 +143,6 @@ window.addEventListener("resize", () => {
 const modalHandler = (display) => {
   main.style.display = display;
   footer.style.display = display;
-  // header.style.display = display;
 };
 let scrollTo;
 document.addEventListener("DOMContentLoaded", () => {
