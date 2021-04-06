@@ -1814,7 +1814,7 @@ form h2 {
 
 @media screen and (max-width: 1024px) {
     .total-price {
-        width: 68%;
+        width: 70%;
     }
 }
 
@@ -1853,25 +1853,18 @@ form h2 {
     margin: 0 auto;
     margin-bottom: 3rem;
     max-width: 100%;
-    line-height: 1.2;
-
+    line-height: 3rem;
 }
 
 
 #request-calculate {
     margin: 0 auto;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 @media screen and (max-width: 640px) {
     .total-price__sum {
         font-size: 24px;
-        line-height: 4rem;
-        margin: 0 auto;
-    }
-
-    .total-price__text {
-        margin-bottom: 0rem;
     }
 }
 
@@ -2044,21 +2037,4 @@ form h2 {
     100% {
         opacity: 0;
     }
-}
-
-.lds-spinner--fix {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -70%);
-}
-
-#calculate-wrap .wrapper-floating-form,
-.form-title,
-#calculate-wrap .form-text,
-.calc-wrap-message {
-    margin-bottom: 0.5rem;
-}
-
-.form-text {
-    margin-bottom: 1rem;
 }
