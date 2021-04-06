@@ -139,13 +139,13 @@ document.addEventListener("DOMContentLoaded", () => {
         applicationForm.classList.contains("active")
       ) {
         applicationForm.classList.remove("active");
-        applicationForm.style.height = "100vh";
-        applicationForm.style.position = `fixed`;
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
           behavior: "smooth",
         });
+        applicationForm.style.position = `fixed`;
+        applicationForm.style.height = "100vh";
         navIcon.classList.remove("active");
         header.classList.remove("active");
         requestBtn.classList.remove("active");

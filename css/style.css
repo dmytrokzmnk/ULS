@@ -1544,7 +1544,7 @@ footer .social-ico-block {
     right: 0;
     bottom: 0;
     position: fixed;
-    z-index: 20;
+    z-index: -1;
     background: #000;
     opacity: 0;
     visibility: hidden;
@@ -1557,6 +1557,7 @@ footer .social-ico-block {
 .form-wrap.active {
     opacity: 1;
     visibility: visible;
+    z-index: 20;
 }
 
 .form-wrap .background-image,
@@ -1866,7 +1867,7 @@ form h2 {
     .total-price__sum {
         font-size: 25px;
         line-height: 4rem;
-        max-width: 70%;
+        max-width: 50%;
         margin: 0 auto;
     }
 
