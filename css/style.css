@@ -1853,16 +1853,9 @@ form h2 {
     margin-bottom: 3rem;
     max-width: 100%;
     line-height: 1.2;
-    transform: scale(0);
-    opacity: 0;
-    transition: all .75s cubic-bezier(0.87, 0, 0.13, 1);
 
 }
 
-.total-price__sum.active {
-    transform: scale(1);
-    opacity: 1;
-}
 
 #request-calculate {
     margin: 0 auto;
@@ -1944,9 +1937,9 @@ form h2 {
 .lds-spinner {
     display: inline-block;
     position: absolute;
-    top: 50%;
+    top: 40vh;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     width: 80px;
     height: 80px;
     z-index: 100;

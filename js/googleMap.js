@@ -20,8 +20,6 @@ window.initMap = function () {
     options
   );
 
-  let destinationAddress, originAddress;
-
   destinationAutocomplete.addListener("place_changed", () => {
     const place = destinationAutocomplete.getPlace();
     destinationAddress = place.formatted_address;
@@ -87,7 +85,7 @@ window.initMap = function () {
       }
       return;
     }
-    totalPrice.insertAdjacentHTML(
+    calculateWrap.insertAdjacentHTML(
       "beforeend",
       `<div id="spinner">
         <div></div>
@@ -105,12 +103,10 @@ window.initMap = function () {
       </div>`
     );
     const spinner = document.querySelector("#spinner");
-    spinner.classList.add("lds-spinner", "lds-spinner--fix");
+    spinner.classList.add("lds-spinner");
     calcBtn.disabled = true;
     calculateDistance();
     setTimeout(() => {
-      destinationAddress = "";
-      originAddress = "";
       originInput.value = "";
       destinationInput.value = "";
       weightInput.value = "";
@@ -137,8 +133,12 @@ window.initMap = function () {
       .then((res) => res.json())
       .then((data) => {
         totalPriceSum.innerText = `${data.firstPrice} ... ${data.secondPrice} грн.`;
-        formCalc.classList.add("total-price-open");
-        totalPrice.classList.add("total-price-open");
+        const spinner = document.querySelector("#spinner");
+        setTimeout(() => {
+          spinner.classList.add("active");
+          // totalPriceSum.classList.add("active");
+          spinner.remove();
+        }, 400);
       })
       .catch((error) => {
         if (error) {
@@ -154,12 +154,8 @@ window.initMap = function () {
         }
       })
       .finally(() => {
-        const spinner = document.querySelector("#spinner");
-        setTimeout(() => {
-          spinner.classList.add("active");
-          totalPriceSum.classList.add("active");
-          spinner.remove();
-        }, 800);
+        formCalc.classList.add("total-price-open");
+        totalPrice.classList.add("total-price-open");
       });
   };
 };

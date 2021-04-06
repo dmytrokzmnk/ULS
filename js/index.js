@@ -35,7 +35,14 @@ const formUser = document.querySelector("#user-form");
 const calcBtn = document.querySelector("#calc-btn");
 const phoneInput = document.querySelector("#phone");
 const emailInput = document.querySelector("#email");
-let fullName, phone, email, comments, weight, volume;
+let fullName,
+  phone,
+  email,
+  comments,
+  weight,
+  volume,
+  destinationAddress,
+  originAddress;
 const arrayAllInputs = document.querySelectorAll("input");
 const textarea = document.querySelector("#message");
 const textareaDecoration = document.querySelector(".textarea-decoration");
@@ -43,7 +50,7 @@ const formWrap = document.querySelectorAll(".form-wrap");
 const faders = document.querySelectorAll(".fade-in");
 const footer = document.querySelector("footer");
 const main = document.querySelector("main");
-
+let scriptGoogle = false;
 addEventListener("load", function () {
   var viewport = document.querySelector("meta[name=viewport]");
   viewport.setAttribute(
@@ -154,6 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
           nav.classList.remove("active");
         }
         calculateWrap.style.height = "100vh";
+        applicationForm.style.position = `fixed`;
+
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
@@ -180,6 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         applicationForm.classList.remove("active");
         applicationForm.style.height = "100vh";
+        applicationForm.style.position = `fixed`;
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
@@ -203,6 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         applicationForm.classList.remove("active");
         applicationForm.style.height = "100vh";
+        calculateWrap.style.position = `fixed`;
 
         modalHandler("block");
         window.scrollTo({
@@ -240,6 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
         formCalc.classList.contains("req-error")
       ) {
         calculateWrap.style.height = "100vh";
+        calculateWrap.style.position = `fixed`;
 
         modalHandler("block");
         window.scrollTo({
@@ -272,6 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (event.target.closest("#calculate-btn")) {
       document.head.appendChild(script);
+      scriptGoogle = true;
       scrollTo = window.scrollY;
       setTimeout(() => {
         calculateWrap.classList.add("active");
@@ -381,13 +394,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (event.target.closest("#request-calculate")) {
-      totalPriceSum.classList.remove("active");
-      formCalc.classList.remove("total-price-open");
-      totalPrice.classList.remove("total-price-open");
-      applicationForm.classList.add("active");
+      scrollTo = window.scrollY;
+      setTimeout(() => {
+        applicationForm.classList.add("active");
+      }, 400);
+      setTimeout(() => {
+        applicationForm.style.position = `absolute`;
+        applicationForm.style.height = "150vh";
+        calculateWrap.classList.remove("active");
+        totalPriceSum.classList.remove("active");
+        formCalc.classList.remove("total-price-open");
+        totalPrice.classList.remove("total-price-open");
+        calculateWrap.style.height = "100vh";
+        calculateWrap.style.position = `fixed`;
+      }, 1000);
+      applicationForm.style.display = "flex";
+
       navIcon.classList.add("active");
       requestBtn.classList.add("active");
-      calculateWrap.classList.remove("active");
       return;
     }
   });
@@ -416,7 +440,6 @@ let phoneSecondIndex = phoneInput.value[1];
 body.addEventListener("input", (e) => {
   if (phoneFirstIndex === "0" && phoneInput.value.length === 10) {
     phoneInput.style.borderBottom = "1px solid rgba(255, 255, 255)";
-    return;
   }
   if (
     phoneFirstIndex === "3" &&
@@ -424,19 +447,16 @@ body.addEventListener("input", (e) => {
     phoneInput.value.length === 12
   ) {
     phoneInput.style.borderBottom = "1px solid rgba(255, 255, 255)";
-    return;
   }
   if (phoneInput.value.includes("+38") && phoneInput.value.length === 13) {
     phoneInput.style.borderBottom = "1px solid rgba(255, 255, 255)";
-    return;
   }
   if (phoneFirstIndex === "8" && phoneInput.value.length === 11) {
     phoneInput.style.borderBottom = "1px solid rgba(255, 255, 255)";
-    return;
   }
+
   if (emailInput.value.includes(".")) {
     emailInput.style.borderBottom = "1px solid rgba(255, 255, 255)";
-    return;
   }
   if (e.target.name === "name") {
     fullName = e.target.value;
@@ -524,18 +544,27 @@ formUser.addEventListener("submit", async (e) => {
   );
   const spinner = document.querySelector("#spinner");
   spinner.classList.add("lds-spinner");
-
   formBtn.disabled = true;
-  const bodyPost = {
-    email,
-    name: fullName,
-    phone,
-    text: comments,
-    originCity: originAddress ? originAddress : null,
-    destinationCity: destinationAddress ? destinationAddress : null,
-    weight: weight ? weight : null,
-    volume: volume ? volume : null,
-  };
+  let bodyPost;
+  if (scriptGoogle) {
+    bodyPost = {
+      email,
+      name: fullName,
+      phone,
+      text: comments,
+      originCity: originAddress,
+      destinationCity: destinationAddress,
+      weight: weight ? weight : null,
+      volume: volume ? volume : null,
+    };
+  } else {
+    bodyPost = {
+      email,
+      name: fullName,
+      phone,
+      text: comments,
+    };
+  }
 
   fetch("https://powerful-dawn-69442.herokuapp.com/sendtome", {
     method: "POST",
