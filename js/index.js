@@ -53,7 +53,7 @@ const main = document.querySelector("main");
 const homeOverlay = document.querySelector(".home-overlay");
 const homeOverlayTitle = document.querySelector(".home-overlay__title");
 let scriptGoogle = false;
-const progressBar = document.querySelector(".progress-bar");
+const progressBar = document.querySelector(".home-overlay__progress-bar");
 
 homeOverlayTitle.classList.add("load");
 
@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         applicationForm.style.position = `fixed`;
         applicationForm.style.height = "100vh";
+        applicationForm.style.zIndex = 0;
         navIcon.classList.remove("active");
         header.classList.remove("active");
         requestBtn.classList.remove("active");
@@ -204,6 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         applicationForm.classList.remove("active");
         applicationForm.style.height = "100vh";
+        applicationForm.style.zIndex = 0;
         applicationForm.style.position = `fixed`;
         modalHandler("block");
         window.scrollTo({
@@ -228,7 +230,8 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         applicationForm.classList.remove("active");
         applicationForm.style.height = "100vh";
-        calculateWrap.style.position = `fixed`;
+        applicationForm.style.zIndex = 0;
+        applicationForm.style.position = `fixed`;
 
         modalHandler("block");
         window.scrollTo({
@@ -409,7 +412,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (event.target.closest("#request-calculate")) {
-      scrollTo = window.scrollY;
       setTimeout(() => {
         applicationForm.classList.add("active");
       }, 400);
@@ -424,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
         calculateWrap.style.position = `fixed`;
       }, 1000);
       applicationForm.style.display = "flex";
-
+      applicationForm.style.zIndex = 22;
       navIcon.classList.add("active");
       requestBtn.classList.add("active");
       return;
