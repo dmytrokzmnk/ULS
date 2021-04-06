@@ -106,13 +106,6 @@ window.initMap = function () {
     spinner.classList.add("lds-spinner");
     calcBtn.disabled = true;
     calculateDistance();
-    setTimeout(() => {
-      originInput.value = "";
-      destinationInput.value = "";
-      weightInput.value = "";
-      volumeInput.value = "";
-      quantityInput.value = "";
-    }, 2000);
     const calcTextMessage = document.querySelector(".calc-text-message");
     if (calcTextMessage && calcTextMessage.classList.contains("active")) {
       calcTextMessage.remove();
@@ -136,7 +129,6 @@ window.initMap = function () {
         const spinner = document.querySelector("#spinner");
         setTimeout(() => {
           spinner.classList.add("active");
-          // totalPriceSum.classList.add("active");
           spinner.remove();
         }, 400);
       })
@@ -156,6 +148,11 @@ window.initMap = function () {
       .finally(() => {
         formCalc.classList.add("total-price-open");
         totalPrice.classList.add("total-price-open");
+        originInput.value = "";
+        destinationInput.value = "";
+        weightInput.value = "";
+        volumeInput.value = "";
+        quantityInput.value = "";
       });
   };
 };
