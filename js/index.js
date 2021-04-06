@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         modalHandler("none");
         applicationForm.style.position = `absolute`;
-        applicationForm.style.height = "150vh";
+        applicationForm.style.height = "110vh";
       }, 1000);
       applicationForm.style.display = "flex";
       header.classList.add("active");
@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 400);
       setTimeout(() => {
         modalHandler("none");
-        calculateWrap.style.height = "150vh";
+        calculateWrap.style.height = "110vh";
         calculateWrap.style.position = `absolute`;
       }, 1000);
       calculateWrap.style.display = "flex";
@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 400);
       setTimeout(() => {
         modalHandler("none");
-        calculateWrap.style.height = "150vh";
+        calculateWrap.style.height = "110vh";
         calculateWrap.style.position = `absolute`;
       }, 1000);
       calculateWrap.style.display = "flex";
@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 400);
       setTimeout(() => {
         applicationForm.style.position = `absolute`;
-        applicationForm.style.height = "150vh";
+        applicationForm.style.height = "110vh";
         calculateWrap.classList.remove("active");
         totalPriceSum.classList.remove("active");
         formCalc.classList.remove("total-price-open");
