@@ -120,7 +120,7 @@ window.addEventListener("resize", () => {
 const modalHandler = (display) => {
   main.style.display = display;
   footer.style.display = display;
-  header.style.display = display;
+  // header.style.display = display;
 };
 let scrollTo;
 document.addEventListener("DOMContentLoaded", () => {
@@ -132,13 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
         applicationForm.classList.contains("active")
       ) {
         applicationForm.classList.remove("active");
+        applicationForm.style.height = "100vh";
+        applicationForm.style.position = `fixed`;
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
           behavior: "smooth",
         });
-        applicationForm.style.position = `fixed`;
-        applicationForm.style.height = `${document.documentElement.clientHeight}px`;
         navIcon.classList.remove("active");
         header.classList.remove("active");
         requestBtn.classList.remove("active");
@@ -153,13 +153,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (nav.classList.contains("active")) {
           nav.classList.remove("active");
         }
+        calculateWrap.style.height = "100vh";
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
           behavior: "smooth",
         });
         calculateWrap.style.position = `fixed`;
-        calculateWrap.style.height = `${document.documentElement.clientHeight}px`;
         calculateWrap.classList.remove("active");
         navIcon.classList.remove("active");
         header.classList.remove("active");
@@ -179,13 +179,13 @@ document.addEventListener("DOMContentLoaded", () => {
         applicationForm.classList.contains("active")
       ) {
         applicationForm.classList.remove("active");
+        applicationForm.style.height = "100vh";
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
           behavior: "smooth",
         });
         applicationForm.style.position = `fixed`;
-        applicationForm.style.height = `${document.documentElement.clientHeight}px`;
         formUser.classList.remove("req-success");
         setTimeout(() => {
           titleSubmit.remove();
@@ -202,13 +202,14 @@ document.addEventListener("DOMContentLoaded", () => {
         applicationForm.classList.contains("active")
       ) {
         applicationForm.classList.remove("active");
+        applicationForm.style.height = "100vh";
+
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
           behavior: "smooth",
         });
         applicationForm.style.position = `fixed`;
-        applicationForm.style.height = `${document.documentElement.clientHeight}px`;
         formUser.classList.remove("req-error");
         const titleError = document.querySelector(".title-error");
         setTimeout(() => titleError.remove(), 400);
@@ -238,13 +239,14 @@ document.addEventListener("DOMContentLoaded", () => {
         calculateWrap.classList.contains("active") &&
         formCalc.classList.contains("req-error")
       ) {
+        calculateWrap.style.height = "100vh";
+
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
           behavior: "smooth",
         });
         calculateWrap.style.position = `fixed`;
-        calculateWrap.style.height = `${document.documentElement.clientHeight}px`;
         const titleError = document.querySelector(".title-error");
         setTimeout(() => titleError.remove(), 400);
         titleError.classList.remove("req-error");
@@ -256,13 +258,11 @@ document.addEventListener("DOMContentLoaded", () => {
       scrollTo = window.scrollY;
       setTimeout(() => {
         applicationForm.classList.add("active");
-      }, 500);
+      }, 400);
       setTimeout(() => {
         modalHandler("none");
         applicationForm.style.position = `absolute`;
-        applicationForm.style.height = `${
-          document.documentElement.clientHeight + 300
-        }px`;
+        applicationForm.style.height = "150vh";
       }, 1000);
       applicationForm.style.display = "flex";
       header.classList.add("active");
@@ -271,16 +271,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     if (event.target.closest("#calculate-btn")) {
+      document.head.appendChild(script);
       scrollTo = window.scrollY;
       setTimeout(() => {
         calculateWrap.classList.add("active");
-      }, 500);
+      }, 400);
       setTimeout(() => {
         modalHandler("none");
+        calculateWrap.style.height = "150vh";
         calculateWrap.style.position = `absolute`;
-        calculateWrap.style.height = `${
-          document.documentElement.clientHeight + 300
-        }px`;
       }, 1000);
       calculateWrap.style.display = "flex";
       header.classList.add("active");
@@ -293,13 +292,11 @@ document.addEventListener("DOMContentLoaded", () => {
       scrollTo = window.scrollY;
       setTimeout(() => {
         calculateWrap.classList.add("active");
-      }, 500);
+      }, 400);
       setTimeout(() => {
         modalHandler("none");
+        calculateWrap.style.height = "150vh";
         calculateWrap.style.position = `absolute`;
-        calculateWrap.style.height = `${
-          document.documentElement.clientHeight + 300
-        }px`;
       }, 1000);
       calculateWrap.style.display = "flex";
       requestBtn.classList.add("active");
@@ -571,6 +568,7 @@ formUser.addEventListener("submit", async (e) => {
       spinner.remove();
       arrayAllInputs.forEach((input) => (input.value = ""));
       textarea.value = "";
+      textareaDecoration.style.top = "44px";
       formBtn.disabled = false;
     });
 });

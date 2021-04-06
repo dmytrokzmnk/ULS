@@ -163,5 +163,3 @@ window.initMap = function () {
       });
   };
 };
-
-document.head.appendChild(script);
