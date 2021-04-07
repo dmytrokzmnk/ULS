@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
         applicationForm.classList.contains("active")
       ) {
         applicationForm.classList.remove("active");
+        applicationForm.style.zIndex = -1;
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
@@ -206,6 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         applicationForm.style.height = "100vh";
         applicationForm.style.position = `fixed`;
         modalHandler("block");
+        applicationForm.style.zIndex = -1;
         window.scrollTo({
           top: scrollTo,
           behavior: "smooth",
@@ -228,8 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         applicationForm.classList.remove("active");
         applicationForm.style.height = "100vh";
-        calculateWrap.style.position = `fixed`;
-
+        applicationForm.style.zIndex = -1;
         modalHandler("block");
         window.scrollTo({
           top: scrollTo,
@@ -292,6 +293,8 @@ document.addEventListener("DOMContentLoaded", () => {
         applicationForm.style.height = "110vh";
       }, 1000);
       applicationForm.style.display = "flex";
+      applicationForm.style.zIndex = 21;
+
       header.classList.add("active");
       navIcon.classList.add("active");
       requestBtn.classList.add("active");
@@ -410,19 +413,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (event.target.closest("#request-calculate")) {
       setTimeout(() => {
-        // totalPrice.classList.remove("total-price-open");
-        // formCalc.classList.remove("total-price-open");
-        // calculateWrap.classList.remove("active");
-        // totalPriceSum.classList.remove("active");
+        applicationForm.classList.add("active");
       }, 400);
       setTimeout(() => {
         applicationForm.style.position = `absolute`;
         applicationForm.style.height = "110vh";
         calculateWrap.style.height = "100vh";
         calculateWrap.style.position = `fixed`;
-      }, 1000);
-      applicationForm.classList.add("active");
+        formCalc.classList.remove("total-price-open");
+        calculateWrap.classList.remove("active");
+        totalPriceSum.classList.remove("active");
+        totalPrice.classList.remove("total-price-open");
+      }, 600);
       applicationForm.style.display = "flex";
+      applicationForm.style.zIndex = 21;
       navIcon.classList.add("active");
       requestBtn.classList.add("active");
       return;

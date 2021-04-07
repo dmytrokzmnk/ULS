@@ -1674,6 +1674,7 @@ form h2 {
 
 .form-text {
     margin-bottom: 1rem;
+    max-width: 90%;
 
 }
 
