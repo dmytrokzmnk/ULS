@@ -353,7 +353,7 @@ header .right-bottom-text span {
     top: 0;
     left: 0;
     background-color: #fff;
-    transition:0.2s ease-in-out;
+    transition:2s ease-in-out;
 }
 /* Transition parallax  */
 
