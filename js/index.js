@@ -160,8 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
           behavior: "smooth",
         });
         applicationForm.style.position = `fixed`;
-        applicationForm.style.height = "100vh";
-        applicationForm.style.zIndex = 0;
+        // applicationForm.style.height = "100vh";
         navIcon.classList.remove("active");
         header.classList.remove("active");
         requestBtn.classList.remove("active");
@@ -176,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (nav.classList.contains("active")) {
           nav.classList.remove("active");
         }
-        calculateWrap.style.height = "100vh";
+        // calculateWrap.style.height = "100vh";
         applicationForm.style.position = `fixed`;
 
         modalHandler("block");
@@ -204,8 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         applicationForm.classList.contains("active")
       ) {
         applicationForm.classList.remove("active");
-        applicationForm.style.height = "100vh";
-        applicationForm.style.zIndex = 0;
+        // applicationForm.style.height = "100vh";
         applicationForm.style.position = `fixed`;
         modalHandler("block");
         window.scrollTo({
@@ -229,9 +227,8 @@ document.addEventListener("DOMContentLoaded", () => {
         applicationForm.classList.contains("active")
       ) {
         applicationForm.classList.remove("active");
-        applicationForm.style.height = "100vh";
-        applicationForm.style.zIndex = 0;
-        applicationForm.style.position = `fixed`;
+        // applicationForm.style.height = "100vh";
+        calculateWrap.style.position = `fixed`;
 
         modalHandler("block");
         window.scrollTo({
@@ -268,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
         calculateWrap.classList.contains("active") &&
         formCalc.classList.contains("req-error")
       ) {
-        calculateWrap.style.height = "100vh";
+        // calculateWrap.style.height = "100vh";
         calculateWrap.style.position = `fixed`;
 
         modalHandler("block");
@@ -292,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         modalHandler("none");
         applicationForm.style.position = `absolute`;
-        applicationForm.style.height = "110vh";
+        // applicationForm.style.height = "110vh";
       }, 1000);
       applicationForm.style.display = "flex";
       header.classList.add("active");
@@ -309,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 400);
       setTimeout(() => {
         modalHandler("none");
-        calculateWrap.style.height = "110vh";
+        // calculateWrap.style.height = "110vh";
         calculateWrap.style.position = `absolute`;
       }, 1000);
       calculateWrap.style.display = "flex";
@@ -326,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 400);
       setTimeout(() => {
         modalHandler("none");
-        calculateWrap.style.height = "110vh";
+        // calculateWrap.style.height = "110vh";
         calculateWrap.style.position = `absolute`;
       }, 1000);
       calculateWrap.style.display = "flex";
@@ -413,20 +410,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (event.target.closest("#request-calculate")) {
       setTimeout(() => {
-        applicationForm.classList.add("active");
+        // totalPrice.classList.remove("total-price-open");
+        // formCalc.classList.remove("total-price-open");
+        // calculateWrap.classList.remove("active");
+        // totalPriceSum.classList.remove("active");
       }, 400);
       setTimeout(() => {
         applicationForm.style.position = `absolute`;
-        applicationForm.style.height = "110vh";
-        calculateWrap.classList.remove("active");
-        totalPriceSum.classList.remove("active");
-        formCalc.classList.remove("total-price-open");
-        totalPrice.classList.remove("total-price-open");
-        calculateWrap.style.height = "100vh";
+        // applicationForm.style.height = "110vh";
+        // calculateWrap.style.height = "100vh";
         calculateWrap.style.position = `fixed`;
       }, 1000);
+      applicationForm.classList.add("active");
       applicationForm.style.display = "flex";
-      applicationForm.style.zIndex = 22;
       navIcon.classList.add("active");
       requestBtn.classList.add("active");
       return;

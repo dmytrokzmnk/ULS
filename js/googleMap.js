@@ -146,13 +146,15 @@ window.initMap = function () {
         }
       })
       .finally(() => {
-        formCalc.classList.add("total-price-open");
-        totalPrice.classList.add("total-price-open");
-        originInput.value = "";
-        destinationInput.value = "";
-        weightInput.value = "";
-        volumeInput.value = "";
-        quantityInput.value = "";
+        setTimeout(() => {
+          formCalc.classList.add("total-price-open");
+          totalPrice.classList.add("total-price-open");
+          originInput.value = "";
+          destinationInput.value = "";
+          weightInput.value = "";
+          volumeInput.value = "";
+          quantityInput.value = "";
+        }, 400);
       });
   };
 };
